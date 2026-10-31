@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="92" viewBox="0 0 720 92" role="img" aria-label="Lines written, commits and active days">
+<style>
+.v{font:600 34px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#1f2328;letter-spacing:-0.5px}
+.l{font:500 12px -apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif;fill:#656d76;letter-spacing:0.6px;text-transform:uppercase}
+</style>
+<text x="0" y="50" class="v">868k</text><text x="0" y="74" class="l">lines written</text><line x1="240" y1="18" x2="240" y2="82" stroke="#d8dee4"/><text x="268" y="50" class="v">1,865</text><text x="268" y="74" class="l">commits</text><line x1="480" y1="18" x2="480" y2="82" stroke="#d8dee4"/><text x="508" y="50" class="v">162</text><text x="508" y="74" class="l">active days</text>
+</svg>
