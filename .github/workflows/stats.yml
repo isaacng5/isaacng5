@@ -1,0 +1,41 @@
+name: Update stats card
+
+on:
+  schedule:
+    - cron: "17 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stats
+  cancel-in-progress: true
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build card
+        env:
+          GH_TOKEN: ${{ secrets.STATS_TOKEN }}
+          STATS_EXCLUDE_REPOS: ${{ secrets.STATS_EXCLUDE_REPOS }}
+        run: python scripts/stats.py
+      - name: Publish
+        env:
+          GIT_AUTHOR_NAME: Isaac
+          GIT_AUTHOR_EMAIL: 148813883+isaacng5@users.noreply.github.com
+          GIT_COMMITTER_NAME: Isaac
+          GIT_COMMITTER_EMAIL: 148813883+isaacng5@users.noreply.github.com
+        run: |
+          git add -A assets
+          if git diff --cached --quiet; then exit 0; fi
+          git checkout --orphan fresh
+          git add -A
+          git commit -m "Profile"
+          git push --force origin fresh:main
